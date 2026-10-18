@@ -148,7 +148,7 @@ function adminPage(){return appShell(`${pageHeader('Administration','Scope, evid
 
 function render(){
   if(state.loading){document.querySelector('#app').innerHTML='<div class="loadingScreen"><div class="spinner"></div><h1>Loading GrantCurrent</h1><p>Preparing funding intelligence…</p></div>';return}
-  if(state.error){document.querySelector('#app').innerHTML=`<div class="fatal"><h1>GrantCurrent</h1><p>Could not load the API.</p><code>${esc(state.error)}</code><p>Open <b>http://localhost:8000/health</b> to confirm the backend is running.</p></div>`;return}
+  if(state.error){document.querySelector('#app').innerHTML=`<div class="fatal"><h1>GrantCurrent</h1><p>Could not load the API.</p><code>${esc(state.error)}</code><p>Open <b>/health</b> on this site to confirm the backend is running.</p></div>`;return}
   const pages={overview:overviewPage,pipeline:pipelinePage,funders:fundersPage,matching:matchingPage,analytics:analyticsPage,advisor:advisorPage,planner:plannerPage,reports:reportsPage,admin:adminPage};
   document.querySelector('#app').innerHTML=(pages[state.tab]||overviewPage)(); bind();
 }
