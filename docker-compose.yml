@@ -1,20 +1,10 @@
-services:
-  backend:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
-    env_file: .env
-    ports: ["8000:8000"]
-    read_only: true
-    tmpfs: ["/tmp"]
-    volumes:
-      - grantcurrent_data:/data
   frontend:
     build:
       context: .
       dockerfile: frontend/Dockerfile
     depends_on: [backend]
+    environment:
+      PORT: "80"
+      BACKEND_URL: http://backend:8000
+      DNS_RESOLVER: 127.0.0.11
     ports: ["5173:80"]
-
-volumes:
-  grantcurrent_data:
