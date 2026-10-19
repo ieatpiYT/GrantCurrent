@@ -21,4 +21,4 @@ EXPOSE 8000
 # "--host ::" lets the server be reached over Railway's private (IPv6) network.
 # "--proxy-headers" makes the rate limiter see each visitor's real IP
 # instead of the nginx container's IP.
-CMD ["sh", "-c", "uvicorn app.main:app --host :: --port ${PORT:-8000} --proxy-headers --forwarded-allow-ips='*'"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --proxy-headers --forwarded-allow-ips='*'"]
